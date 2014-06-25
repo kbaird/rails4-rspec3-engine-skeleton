@@ -104,26 +104,24 @@ module PlanetExpress
 
     describe "PUT update" do
       describe "with valid params" do
-        let(:new_attributes) {
-          skip("Add a hash of attributes valid for your model")
-        }
+        let(:new_attributes) { valid_attributes.merge(name: 'new name') }
 
         it "updates the requested zoidberg" do
           zoidberg = Zoidberg.create! valid_attributes
-          put :update, {id: zoidberg.to_param, zoidberg:  new_attributes}, valid_session
+          put :update, {id: zoidberg.to_param, zoidberg: new_attributes}, valid_session
           zoidberg.reload
-          skip("Add assertions for updated state")
+          expect(zoidberg.name).to eq 'new name'
         end
 
         it "assigns the requested zoidberg as @zoidberg" do
           zoidberg = Zoidberg.create! valid_attributes
-          put :update, {id: zoidberg.to_param, zoidberg:  valid_attributes}, valid_session
+          put :update, {id: zoidberg.to_param, zoidberg: valid_attributes}, valid_session
           expect(assigns(:zoidberg)).to eq(zoidberg)
         end
 
         it "redirects to the zoidberg" do
           zoidberg = Zoidberg.create! valid_attributes
-          put :update, {id: zoidberg.to_param, zoidberg:  valid_attributes}, valid_session
+          put :update, {id: zoidberg.to_param, zoidberg: valid_attributes}, valid_session
           expect(response).to redirect_to(zoidberg)
         end
       end
@@ -131,14 +129,14 @@ module PlanetExpress
       describe "with invalid params" do
         it "assigns the zoidberg as @zoidberg" do
           zoidberg = Zoidberg.create! valid_attributes
-          put :update, {id: zoidberg.to_param, zoidberg:  invalid_attributes}, valid_session
+          put :update, {id: zoidberg.to_param, zoidberg: invalid_attributes}, valid_session
           expect(assigns(:zoidberg)).to eq(zoidberg)
         end
 
         it "re-renders the 'edit' template" do
           skip 'fix rendering'
           zoidberg = Zoidberg.create! valid_attributes
-          put :update, {id: zoidberg.to_param, zoidberg:  invalid_attributes}, valid_session
+          put :update, {id: zoidberg.to_param, zoidberg: invalid_attributes}, valid_session
           expect(response).to render_template("edit")
         end
       end
