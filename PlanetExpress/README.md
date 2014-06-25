@@ -1,4 +1,4 @@
-# Planet Express Engine
+# "_Planet Express_" Engine
 
 ## How to Include in a Rails App
 
