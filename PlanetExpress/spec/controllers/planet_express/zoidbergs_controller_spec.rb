@@ -19,7 +19,7 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 module PlanetExpress
-  RSpec.describe ZoidbergsController, :type => :controller do
+  RSpec.describe ZoidbergsController, type: :controller do
 
     # This should return the minimal set of attributes required to create a valid
     # Zoidberg. As you add validations to Zoidberg, be sure to
@@ -29,7 +29,7 @@ module PlanetExpress
     }
 
     let(:invalid_attributes) {
-      {name: 'Dr. John Zoidberg', species: :robot}
+      {a: :b, c: :d}
     }
 
     # This should return the minimal set of values that should be in the session
@@ -48,7 +48,7 @@ module PlanetExpress
     describe "GET show" do
       it "assigns the requested zoidberg as @zoidberg" do
         zoidberg = Zoidberg.create! valid_attributes
-        get :show, {:id => zoidberg.to_param}, valid_session
+        get :show, {id: zoidberg.to_param}, valid_session
         expect(assigns(:zoidberg)).to eq(zoidberg)
       end
     end
@@ -63,7 +63,7 @@ module PlanetExpress
     describe "GET edit" do
       it "assigns the requested zoidberg as @zoidberg" do
         zoidberg = Zoidberg.create! valid_attributes
-        get :edit, {:id => zoidberg.to_param}, valid_session
+        get :edit, {id: zoidberg.to_param}, valid_session
         expect(assigns(:zoidberg)).to eq(zoidberg)
       end
     end
@@ -72,18 +72,18 @@ module PlanetExpress
       describe "with valid params" do
         it "creates a new Zoidberg" do
           expect {
-            post :create, {:zoidberg => valid_attributes}, valid_session
+            post :create, {zoidberg: valid_attributes}, valid_session
           }.to change(Zoidberg, :count).by(1)
         end
 
         it "assigns a newly created zoidberg as @zoidberg" do
-          post :create, {:zoidberg => valid_attributes}, valid_session
+          post :create, {zoidberg: valid_attributes}, valid_session
           expect(assigns(:zoidberg)).to be_a(Zoidberg)
           expect(assigns(:zoidberg)).to be_persisted
         end
 
         it "redirects to the created zoidberg" do
-          post :create, {:zoidberg => valid_attributes}, valid_session
+          post :create, {zoidberg: valid_attributes}, valid_session
           expect(response).to redirect_to(Zoidberg.last)
         end
       end
@@ -91,12 +91,12 @@ module PlanetExpress
       describe "with invalid params" do
         next # TODO: fix rendering
         it "assigns a newly created but unsaved zoidberg as @zoidberg" do
-          post :create, {:zoidberg => invalid_attributes}, valid_session
+          post :create, {zoidberg: invalid_attributes}, valid_session
           expect(assigns(:zoidberg)).to be_a_new(Zoidberg)
         end
 
         it "re-renders the 'new' template" do
-          post :create, {:zoidberg => invalid_attributes}, valid_session
+          post :create, {zoidberg: invalid_attributes}, valid_session
           expect(response).to render_template("new")
         end
       end
@@ -110,20 +110,20 @@ module PlanetExpress
 
         it "updates the requested zoidberg" do
           zoidberg = Zoidberg.create! valid_attributes
-          put :update, {:id => zoidberg.to_param, :zoidberg => new_attributes}, valid_session
+          put :update, {id: zoidberg.to_param, zoidberg:  new_attributes}, valid_session
           zoidberg.reload
           skip("Add assertions for updated state")
         end
 
         it "assigns the requested zoidberg as @zoidberg" do
           zoidberg = Zoidberg.create! valid_attributes
-          put :update, {:id => zoidberg.to_param, :zoidberg => valid_attributes}, valid_session
+          put :update, {id: zoidberg.to_param, zoidberg:  valid_attributes}, valid_session
           expect(assigns(:zoidberg)).to eq(zoidberg)
         end
 
         it "redirects to the zoidberg" do
           zoidberg = Zoidberg.create! valid_attributes
-          put :update, {:id => zoidberg.to_param, :zoidberg => valid_attributes}, valid_session
+          put :update, {id: zoidberg.to_param, zoidberg:  valid_attributes}, valid_session
           expect(response).to redirect_to(zoidberg)
         end
       end
@@ -131,14 +131,14 @@ module PlanetExpress
       describe "with invalid params" do
         it "assigns the zoidberg as @zoidberg" do
           zoidberg = Zoidberg.create! valid_attributes
-          put :update, {:id => zoidberg.to_param, :zoidberg => invalid_attributes}, valid_session
+          put :update, {id: zoidberg.to_param, zoidberg:  invalid_attributes}, valid_session
           expect(assigns(:zoidberg)).to eq(zoidberg)
         end
 
         it "re-renders the 'edit' template" do
           skip 'fix rendering'
           zoidberg = Zoidberg.create! valid_attributes
-          put :update, {:id => zoidberg.to_param, :zoidberg => invalid_attributes}, valid_session
+          put :update, {id: zoidberg.to_param, zoidberg:  invalid_attributes}, valid_session
           expect(response).to render_template("edit")
         end
       end
@@ -148,13 +148,13 @@ module PlanetExpress
       it "destroys the requested zoidberg" do
         zoidberg = Zoidberg.create! valid_attributes
         expect {
-          delete :destroy, {:id => zoidberg.to_param}, valid_session
+          delete :destroy, {id: zoidberg.to_param}, valid_session
         }.to change(Zoidberg, :count).by(-1)
       end
 
       it "redirects to the zoidbergs list" do
         zoidberg = Zoidberg.create! valid_attributes
-        delete :destroy, {:id => zoidberg.to_param}, valid_session
+        delete :destroy, {id: zoidberg.to_param}, valid_session
         expect(response).to redirect_to(zoidbergs_url)
       end
     end
