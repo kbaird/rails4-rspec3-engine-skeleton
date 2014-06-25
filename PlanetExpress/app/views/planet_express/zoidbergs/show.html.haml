@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @zoidberg.name
+
+= link_to 'Edit', edit_zoidberg_path(@zoidberg)
+\|
+= link_to 'Back', zoidbergs_path

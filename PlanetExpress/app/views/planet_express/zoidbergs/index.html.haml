@@ -1,0 +1,19 @@
+%h1 Listing zoidbergs
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @zoidbergs.each do |zoidberg|
+    %tr
+      %td= zoidberg.name
+      %td= link_to 'Show', zoidberg
+      %td= link_to 'Edit', edit_zoidberg_path(zoidberg)
+      %td= link_to 'Destroy', zoidberg, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Zoidberg', new_zoidberg_path
