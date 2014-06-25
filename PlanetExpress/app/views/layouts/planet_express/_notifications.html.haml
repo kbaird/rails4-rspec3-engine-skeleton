@@ -1,0 +1,10 @@
+- if (warning=flash[:warning]).present? || notice.present?
+  .notifications_container
+    - if warning.present?
+      .alert.alert-danger
+        .close{data: {dismiss: 'alert'}} &times;
+        = warning
+    - if notice.present?
+      .alert.alert-success
+        .close{data: {dismiss: 'alert'}} &times;
+        = notice
