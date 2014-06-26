@@ -18,6 +18,10 @@ Gem::Specification.new do |s|
   s.test_files = Dir['spec/**/*']
 
   s.add_dependency 'activerecord'
+  # MongoDB w/Mongoid instead of ActiveRecord
+  #s.add_dependency 'mongoid'
+  #s.add_dependency 'bson_ext'
+
   s.add_dependency 'rails', '~> 4.1.1'
 
   # Use SCSS for stylesheets
