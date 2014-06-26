@@ -38,10 +38,13 @@ module PlanetExpress
     let(:valid_session) { {} }
 
     describe "GET index" do
+      before(:example) do
+        Zoidberg.destroy_all
+      end
       it "assigns all zoidbergs as @zoidbergs" do
         zoidberg = Zoidberg.create! valid_attributes
         get :index, {}, valid_session
-        expect(assigns(:zoidbergs)).to eq([zoidberg])
+        expect(assigns(:zoidbergs).to_a).to eq([zoidberg])
       end
     end
 
