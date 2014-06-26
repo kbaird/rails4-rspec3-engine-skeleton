@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'database_cleaner'
 require 'factory_girl_rails'
+require 'mongoid-rspec'
 
 Rails.backtrace_cleaner.remove_silencers!
 
