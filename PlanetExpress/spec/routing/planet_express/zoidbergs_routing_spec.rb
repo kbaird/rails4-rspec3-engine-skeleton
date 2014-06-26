@@ -30,7 +30,8 @@ module PlanetExpress
       end
 
       it "routes to #update" do
-        expect(put: "/zoidbergs/1").to route_to(controller: pzc, action: "update", id: "1")
+        expect(patch: "/zoidbergs/1").to route_to(controller: pzc, action: "update", id: "1")
+        expect(put:   "/zoidbergs/1").to route_to(controller: pzc, action: "update", id: "1")
       end
 
       it "routes to #destroy" do
