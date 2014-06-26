@@ -24,6 +24,10 @@ RSpec.configure do |config|
     end
   }, type: :controller
 
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.orm      = :mongoid
+  end
   config.before(:example) do
     DatabaseCleaner.start
     FactoryGirl.lint
