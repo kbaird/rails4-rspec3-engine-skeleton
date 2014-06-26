@@ -3,6 +3,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path("../dummy/config/environment.rb", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'database_cleaner'
 require 'factory_girl_rails'
 
 Rails.backtrace_cleaner.remove_silencers!
@@ -22,5 +23,13 @@ RSpec.configure do |config|
       base.routes { PlanetExpress::Engine.routes }
     end
   }, type: :controller
+
+  config.before(:example) do
+    DatabaseCleaner.start
+    FactoryGirl.lint
+  end
+  config.after(:example) do
+    DatabaseCleaner.clean
+  end
 
 end
