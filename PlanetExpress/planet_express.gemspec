@@ -25,12 +25,6 @@ Gem::Specification.new do |s|
   # Use CoffeeScript for .js.coffee assets and views
   s.add_dependency 'coffee-rails', '~> 4.0.0'
 
-  # Use jQuery as the JavaScript library
-  s.add_dependency 'jquery-rails'
-
-  # Twitter Bootstrap for styling
-  s.add_dependency 'bootstrap-sass', '~> 3.1.1'
-
   s.add_dependency 'haml'
 
   s.add_development_dependency 'haml-rails'
